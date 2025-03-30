@@ -1,13 +1,80 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+/* login page css */
+.main_pane {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.com_image {
+  background: #ffffff;
+  width: 150px;
+  height: 150px;
+}
+
+.com_image img {
+  height: 100%;
+  width: 100%;
+}
+
+.com_name {
+  font-weight: bolder;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+
+.login_page {
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.my_log {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+}
+
+.my_log h3 {
+  font-size: 25px;
+  font-weight: bolder;
+  font-family: sans-serif;
+}
+
+.my_log img {
+  width: 40px;
+  height: 40px;
+}
+
+.smal_info {
+  font-size: 14px;
+  color: rgb(129, 131, 133);
+  font-weight: lighter;
+}
+
+.text-field .MuiOutlinedInput-root {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.text-field .MuiOutlinedInput-root fieldset {
+  border-color: gray;
+}
+
+.text-field .MuiOutlinedInput-root:hover fieldset {
+  border-color: black;
+}
+
+.text-field .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: black;
+}
+
+.text-field .MuiInputLabel-root {
+  color: gray;
+}
+
+.text-field .MuiInputLabel-root.Mui-focused {
+  color: black;
 }
