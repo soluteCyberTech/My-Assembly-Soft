@@ -115,7 +115,7 @@ app.post('/createstaff' ,async (req ,res)=>{
         success: true, 
         message: 'Data imported successfully'
         
-       // return res.json(data)
+  
     });
 
 
@@ -166,7 +166,52 @@ app.put('/activate/:ActivationId' ,(req ,res) =>{
 })
 
 
+app.post('/login', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        
+        const sql = 'SELECT * FROM staff WHERE username = ?';
+        const user = await query(sql, [username]);
 
+        if (user.length === 0) {
+            return res.status(401).json({
+                success: false,
+                message: 'Invalid username or password'
+            });
+        }
+
+        const validPassword = passwordHash.verify(password, user[0].pass);
+        
+        if (!validPassword) {
+            return res.status(401).json({
+                success: false,
+                message: 'Invalid username or password'
+            });
+        }
+
+        const userInfo = {
+            id: user[0].id,
+            name: user[0].name,
+            email: user[0].emain,
+            department: user[0].department,
+            role: user[0].role,
+            staff_id: user[0].staff_id
+        };
+
+        res.json({
+            success: true,
+            message: 'Login successful',
+            user: userInfo
+        });
+
+    } catch (error) {
+        console.error('Login error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Server error during login'
+        });
+    }
+});
 
 app.listen(port ,()=>{
     console.log('Connection Up And Runing........')

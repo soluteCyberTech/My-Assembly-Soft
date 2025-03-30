@@ -1,18 +1,22 @@
-import SystemStart from "./Components/SystemStart";
-import { Routes, Route } from 'react-router-dom'
-import React, { useState, useEffect } from 'react'
+import React from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { theme } from './theme';
+import SystemStart from './Components/SystemStart';
+import MainLayout from './Components/Layout/MainLayout';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-
-
-<Routes>
-                  <Route path="/" element={<SystemStart />} />
-
-                </Routes>
-     
-    </div>
+    <ThemeProvider theme={theme}>
+      <Routes>
+        <Route path="/" element={<SystemStart />} />
+        <Route path="/dashboard" element={<MainLayout />}>
+          <Route index element={<Dashboard />} />
+        </Route>
+      
+      </Routes>
+    </ThemeProvider>
   );
 }
 
